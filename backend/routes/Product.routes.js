@@ -15,16 +15,16 @@ router.post("/", addProduct);
 
 // GET
 router.get("/", getAllProducts);
-router.get("/", getAvailableProducts); // TODO
+// TODO router.get("/", getAvailableProducts);
 router.get("/:id", getProduct);
 
 // PUT/PATCH
-router.put("/:id", updateProduct); // TODO
-router.patch("/:id", updateStock); // TODO
-router.patch("/:id", updateProductImage); // TODO
-router.patch("/:id", setProductAvailability); // TODO
+// TODO router.put("/:id", updateProduct);
+// TODO router.patch("/:id", updateStock);
+// TODO router.patch("/:id", updateProductImage);
+// TODO router.patch("/:id", setProductAvailability);
 
 // DELETE
-router.delete("/:id", deleteProduct); // TODO
+router.delete("/:id", deleteProduct);
 
 module.exports = router;
