@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Product = require("../models");
+const { Product } = require("../models");
 
 /* CRUD */
 
