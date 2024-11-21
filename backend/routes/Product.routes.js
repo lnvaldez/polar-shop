@@ -1,4 +1,12 @@
+/* Imports */
 const express = require("express");
+//* Controller Functions
+const {
+  addProduct,
+  getAllProducts,
+  getProduct,
+  deleteProduct,
+} = require("../controllers/Product.controller");
 
 const router = express.Router();
 
