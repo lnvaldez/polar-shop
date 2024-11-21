@@ -61,6 +61,35 @@ const getProduct = async (req, res) => {
 };
 
 //* ..Update
+const updateTotalStock = async (req, res) => {
+  const { id } = req.params;
+  const { stock } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  if (stock < 0) {
+    return res.status(400).json({ error: "Stock can't be negative" });
+  }
+
+  try {
+    const product = await Product.findOneAndUpdate(
+      { _id: id },
+      { stock: stock },
+      { new: true }
+    );
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    return res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const increaseStockByOne = async (req, res) => {
   const { id } = req.params;
 
@@ -115,35 +144,6 @@ const decreaseStockByOne = async (req, res) => {
   }
 };
 
-const updateTotalStock = async (req, res) => {
-  const { id } = req.params;
-  const { stock } = req.body;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "Product not found" });
-  }
-
-  if (stock < 0) {
-    return res.status(400).json({ error: "Stock can't be negative" });
-  }
-
-  try {
-    const product = await Product.findOneAndUpdate(
-      { _id: id },
-      { stock: stock },
-      { new: true }
-    );
-
-    if (!product) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-
-    return res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 const setProductAvailability = async (req, res) => {
   const { id } = req.params;
 
@@ -185,9 +185,9 @@ module.exports = {
   addProduct,
   getAllProducts,
   getProduct,
+  updateTotalStock,
   increaseStockByOne,
   decreaseStockByOne,
-  updateTotalStock,
   setProductAvailability,
   deleteProduct,
 };
