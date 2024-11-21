@@ -24,7 +24,7 @@ router.get("/:id", getProduct);
 // TODO router.put("/:id", updateProduct);
 router.patch("/stock/:id", increaseProductStockByOne);
 // TODO router.patch("/:id", updateProductImage);
-router.patch("/status/:id", setProductAsAvailable);
+router.patch("/status/:id", setProductAvailability);
 
 // DELETE
 router.delete("/:id", deleteProduct);
