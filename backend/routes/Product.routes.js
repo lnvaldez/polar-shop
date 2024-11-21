@@ -13,6 +13,7 @@ router.get("/:id", getProduct);
 // PUT/PATCH
 router.put("/:id", updateProduct); // TODO
 router.patch("/:id", updateStock); // TODO
+router.patch("/:id", updateProductImage); // TODO
 router.patch("/:id", setProductAvailability); // TODO
 
 // DELETE
