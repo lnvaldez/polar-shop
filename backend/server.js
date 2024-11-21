@@ -7,6 +7,8 @@ const PORT = process.env.EXPRESS_PORT || 8080;
 
 const app = express();
 
+app.use(express.json());
+
 const startServer = async () => {
   try {
     await connectDB();
