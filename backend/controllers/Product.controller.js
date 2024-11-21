@@ -69,7 +69,7 @@ const deleteProduct = async (req, res) => {
     return res.status(404).json({ error: "Product not found" });
   }
 
-  res.status(204).json({ success: "Product deleted" });
+  res.status(204);
 };
 
 module.exports = {
