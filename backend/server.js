@@ -7,7 +7,7 @@ const express = require("express");
 //* Config
 const connectDB = require("./config/db.config");
 //* Routes
-const productRoutes = require("./routes");
+const routes = require("./routes");
 
 const PORT = process.env.EXPRESS_PORT || 8080;
 
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/products", productRoutes);
+app.use("/", routes);
 
 const startServer = async () => {
   try {
