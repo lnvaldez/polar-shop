@@ -54,8 +54,59 @@ const getProduct = async (req, res) => {
 };
 
 //* ..Update
-const increaseStockByOne = async (req, res) => {};
-const decreaseStockByOne = async (req, res) => {};
+const increaseStockByOne = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  try {
+    const product = await Product.findOneAndUpdate(
+      { _id: id },
+      { $inc: { stock: 1 } },
+      { new: true }
+    );
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    return res.status(200).json(product);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+const decreaseStockByOne = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  try {
+    const product = Product.findById(id);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    if (product.stock === 0) {
+      return res.status(405).json({ error: "Stock can't be less than zero" });
+    }
+
+    const updatedProduct = await Product.findOneAndUpdate(
+      { _id: id },
+      { $inc: { stock: -1 } },
+      { new: true }
+    );
+
+    return res.status(200).json(updatedProduct);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
 const updateTotalProductStock = async (req, res) => {}; // TODO Replaces current value
 
 const updateProductStock = async (req, res) => {
