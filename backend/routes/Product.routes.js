@@ -4,10 +4,11 @@ const express = require("express");
 const {
   addProduct,
   getAllProducts,
+  getAvailableProducts,
   getProduct,
+  updateTotalStock,
   increaseStockByOne,
   decreaseStockByOne,
-  updateTotalStock,
   setProductAvailability,
   deleteProduct,
 } = require("../controllers/Product.controller");
@@ -19,7 +20,7 @@ router.post("/", addProduct);
 
 // GET
 router.get("/", getAllProducts);
-// TODO router.get("/", getAvailableProducts);
+router.get("/available", getAvailableProducts);
 router.get("/:id", getProduct);
 
 // PUT/PATCH
