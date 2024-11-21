@@ -54,6 +54,10 @@ const getProduct = async (req, res) => {
 };
 
 //* ..Update
+const increaseStockByOne = async (req, res) => {};
+const decreaseStockByOne = async (req, res) => {};
+const updateTotalProductStock = async (req, res) => {}; // TODO Replaces current value
+
 const updateProductStock = async (req, res) => {
   const { id } = req.params;
   const { stock } = req.body;
