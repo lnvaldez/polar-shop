@@ -71,3 +71,10 @@ const deleteProduct = async (req, res) => {
 
   res.status(204).json({ success: "Product deleted" });
 };
+
+module.exports = {
+  addProduct,
+  getAllProducts,
+  getProduct,
+  deleteProduct,
+};
