@@ -54,24 +54,35 @@ const getProduct = async (req, res) => {
 };
 
 //* ..Update
-const increaseProductStockByOne = async (req, res) => {
+const updateProductStock = async (req, res) => {
   const { id } = req.params;
+  const { stock } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Product not found" });
   }
 
-  const product = await Product.findOneAndUpdate(
-    { _id: id },
-    { $inc: { stock: 1 } },
-    { new: true }
-  );
+  try {
+    let update;
 
-  if (!product) {
-    return res.status(404).json({ error: "Product not found" });
+    if (stock !== undefined) {
+      update = { stock };
+    } else {
+      update = { $inc: { stock: 1 } };
+    }
+
+    const product = await Product.findOneAndUpdate({ _id: id }, update, {
+      new: true,
+    });
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    return res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
-
-  res.status(200).json(product);
 };
 
 const setProductAvailability = async (req, res) => {
@@ -115,7 +126,7 @@ module.exports = {
   addProduct,
   getAllProducts,
   getProduct,
-  increaseProductStockByOne,
-  setProductAsAvailable,
+  updateProductStock,
+  setProductAvailability,
   deleteProduct,
 };
