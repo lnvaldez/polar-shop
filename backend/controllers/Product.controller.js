@@ -107,9 +107,8 @@ const decreaseStockByOne = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
-const updateTotalProductStock = async (req, res) => {}; // TODO Replaces current value
 
-const updateProductStock = async (req, res) => {
+const updateTotalStock = async (req, res) => {
   const { id } = req.params;
   const { stock } = req.body;
 
@@ -117,24 +116,16 @@ const updateProductStock = async (req, res) => {
     return res.status(404).json({ error: "Product not found" });
   }
 
-  const p = await Product.findById(id);
-
-  if (stock < 0 && p.stock == 0) {
-    return res.status(405).json({ error: "Stock can't be less than zero" });
+  if (stock < 0) {
+    return res.status(400).json({ error: "Stock can't be negative" });
   }
 
   try {
-    let update;
-
-    if (stock !== undefined) {
-      update = { $inc: { stock: stock } };
-    } else {
-      update = { $inc: { stock: 1 } };
-    }
-
-    const product = await Product.findOneAndUpdate({ _id: id }, update, {
-      new: true,
-    });
+    const product = await Product.findOneAndUpdate(
+      { _id: id },
+      { stock: stock },
+      { new: true }
+    );
 
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
