@@ -5,7 +5,9 @@ const {
   addProduct,
   getAllProducts,
   getProduct,
-  increaseProductStockByOne,
+  increaseStockByOne,
+  decreaseStockByOne,
+  updateTotalStock,
   setProductAvailability,
   deleteProduct,
 } = require("../controllers/Product.controller");
@@ -22,7 +24,9 @@ router.get("/:id", getProduct);
 
 // PUT/PATCH
 // TODO router.put("/:id", updateProduct);
-router.patch("/stock/:id", increaseProductStockByOne);
+router.patch("/stock/incr/:id", increaseStockByOne);
+router.patch("/stock/dec/:id", decreaseStockByOne);
+router.patch("/stock/:id", updateTotalStock);
 // TODO router.patch("/:id", updateProductImage);
 router.patch("/status/:id", setProductAvailability);
 

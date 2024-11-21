@@ -178,7 +178,9 @@ module.exports = {
   addProduct,
   getAllProducts,
   getProduct,
-  updateProductStock,
+  increaseStockByOne,
+  decreaseStockByOne,
+  updateTotalStock,
   setProductAvailability,
   deleteProduct,
 };
