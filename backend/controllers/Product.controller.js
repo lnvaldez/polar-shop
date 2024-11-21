@@ -74,6 +74,26 @@ const increaseProductStockByOne = async (req, res) => {
   res.status(200).json(product);
 };
 
+const setProductAsAvailable = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  const product = await Product.findOneAndUpdate(
+    { _id: id },
+    { available: true },
+    { new: true }
+  );
+
+  if (!product) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  res.status(200).json(product);
+};
+
 //* ..Delete
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
@@ -96,5 +116,6 @@ module.exports = {
   getAllProducts,
   getProduct,
   increaseProductStockByOne,
+  setProductAsAvailable,
   deleteProduct,
 };
