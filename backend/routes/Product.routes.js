@@ -6,7 +6,7 @@ const {
   getAllProducts,
   getProduct,
   increaseProductStockByOne,
-  setProductAsAvailable,
+  setProductAvailability,
   deleteProduct,
 } = require("../controllers/Product.controller");
 
