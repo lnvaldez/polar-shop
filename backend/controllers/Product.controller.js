@@ -52,3 +52,5 @@ const getProduct = async (req, res) => {
 
   res.status(200).json(product);
 };
+
+//* ..Update
