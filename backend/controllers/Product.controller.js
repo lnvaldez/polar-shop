@@ -74,7 +74,7 @@ const increaseProductStockByOne = async (req, res) => {
   res.status(200).json(product);
 };
 
-const setProductAsAvailable = async (req, res) => {
+const setProductAvailability = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -83,7 +83,7 @@ const setProductAsAvailable = async (req, res) => {
 
   const product = await Product.findOneAndUpdate(
     { _id: id },
-    { available: true },
+    [{ $set: { available: { $eq: [false, "$available"] } } }],
     { new: true }
   );
 
