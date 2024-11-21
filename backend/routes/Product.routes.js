@@ -6,6 +6,7 @@ const {
   getAllProducts,
   getProduct,
   increaseProductStockByOne,
+  setProductAsAvailable,
   deleteProduct,
 } = require("../controllers/Product.controller");
 
@@ -21,9 +22,9 @@ router.get("/:id", getProduct);
 
 // PUT/PATCH
 // TODO router.put("/:id", updateProduct);
-router.patch("/:id", increaseProductStockByOne);
+router.patch("/stock/:id", increaseProductStockByOne);
 // TODO router.patch("/:id", updateProductImage);
-// TODO router.patch("/:id", setProductAvailability);
+router.patch("/status/:id", setProductAsAvailable);
 
 // DELETE
 router.delete("/:id", deleteProduct);
