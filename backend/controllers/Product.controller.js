@@ -44,6 +44,17 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+const getAvailableProducts = async (req, res) => {
+  try {
+    const products = await Product.find({ available: true }).sort({
+      createdAt: -1,
+    });
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const getProduct = async (req, res) => {
   const { id } = req.params;
 
@@ -184,6 +195,7 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   addProduct,
   getAllProducts,
+  getAvailableProducts,
   getProduct,
   updateTotalStock,
   increaseStockByOne,
