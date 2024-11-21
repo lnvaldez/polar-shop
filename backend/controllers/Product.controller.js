@@ -63,7 +63,8 @@ const increaseProductStockByOne = async (req, res) => {
 
   const product = await Product.findOneAndUpdate(
     { _id: id },
-    { stock: stock + 1 }
+    { $inc: { stock: 1 } },
+    { new: true }
   );
 
   if (!product) {
