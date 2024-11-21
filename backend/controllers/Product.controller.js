@@ -86,13 +86,13 @@ const decreaseStockByOne = async (req, res) => {
   }
 
   try {
-    const product = Product.findById(id);
+    const product = await Product.findById(id);
 
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
 
-    if (product.stock === 0) {
+    if (product.stock == 0) {
       return res.status(405).json({ error: "Stock can't be less than zero" });
     }
 
