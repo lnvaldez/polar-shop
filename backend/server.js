@@ -1,7 +1,13 @@
 require("dotenv").config();
 
+//* Requirements
 const express = require("express");
+
+/* Imports */
+//* Config
 const connectDB = require("./config/db.config");
+//* Routes
+const productRoutes = require("./routes");
 
 const PORT = process.env.EXPRESS_PORT || 8080;
 
@@ -13,6 +19,8 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
+app.use("/products", productRoutes);
 
 const startServer = async () => {
   try {
