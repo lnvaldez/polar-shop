@@ -14,6 +14,14 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    image: {
+      type: String,
+      required: false,
+    },
+    available: {
+      type: Boolean,
+      default: true,
+    },
     description: String,
   },
   { timestamps: true }
