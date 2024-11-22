@@ -17,7 +17,7 @@ const renderAdminDashboard = async (req, res) => {
 const renderAllProductsPage = async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
-    res.render("admin/products", { product });
+    res.render("admin/products", { products });
   } catch (error) {
     console.error({ error: error.message });
     res.render("error");
