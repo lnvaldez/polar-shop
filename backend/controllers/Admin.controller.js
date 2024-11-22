@@ -10,17 +10,17 @@ const renderAdminDashboard = async (req, res) => {
     res.render("admin/dashboard", { totalProducts });
   } catch (error) {
     console.error({ error: error.message });
-    res.render("/error");
+    res.render("error");
   }
 };
 
 const renderAllProductsPage = async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
-    res.render("admin/products", { products });
+    res.render("admin/products", { product });
   } catch (error) {
     console.error({ error: error.message });
-    res.render("/error");
+    res.render("error");
   }
 };
 
@@ -32,7 +32,7 @@ const renderProductPage = async (req, res) => {
     res.render(`admin/product`, { product });
   } catch (error) {
     console.error({ error: error.message });
-    res.render("/error");
+    res.render("error");
   }
 };
 
