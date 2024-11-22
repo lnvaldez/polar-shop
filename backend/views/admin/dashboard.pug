@@ -1,6 +1,25 @@
-extends ../layouts/main 
+extends ../layouts/main
 
-block content 
-    h1 Admin Dashboard 
-    p Products: 
-        p= totalProducts
+block content
+    .container
+        header
+            h1 Admin Dashboard
+            p Welcome back, Paula 😀
+
+        .boxes
+            .box
+                p Products
+                .amount-container
+                    i.fas.fa-box
+                    p= totalProducts
+            .box
+                p Users
+                .amount-container
+                    i.fas.fa-user
+                    p 25
+                
+            .box
+                p Orders
+                .amount-container
+                    i.fas.fa-shopping-cart
+                    p 6
