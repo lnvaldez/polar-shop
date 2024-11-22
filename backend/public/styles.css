@@ -47,7 +47,6 @@ nav {
 .logo img {
   width: 62px;
   height: 60px;
-  box-shadow: var(--card-shadow);
 }
 
 .logo span {
