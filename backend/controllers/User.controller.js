@@ -1,4 +1,4 @@
-const User = require("../models");
+const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 
 const generateToken = (_id) => {
@@ -27,7 +27,7 @@ const login = async (req, res) => {
 
     res.status(200).json({ name, token });
   } catch (error) {
-    res.statuso(400).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
