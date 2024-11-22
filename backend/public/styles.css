@@ -21,16 +21,14 @@ nav {
   height: 100%;
   left: 0;
   background: #fff;
-  width: 90px;
-  overflow: hidden;
-  transition: width 0.2s linear;
+  width: 280px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .logo {
   text-align: center;
   display: flex;
-  transition: all 0.5s ease;
   margin: 10px 0 0 10px;
 }
 
@@ -73,11 +71,6 @@ a {
 
 a:hover {
   background: #eee;
-}
-
-nav:hover {
-  width: 280px;
-  transition: all 0.5s ease;
 }
 
 .logout {
