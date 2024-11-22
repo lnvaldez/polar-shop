@@ -24,3 +24,5 @@ const renderProductPage = async (req, res) => {
     res.render("/error");
   }
 };
+
+module.exports = { renderAllProductsPage, renderProductPage };
