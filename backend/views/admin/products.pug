@@ -1,7 +1,13 @@
 extends ../layouts/main 
 
+mixin productList 
+    for product in products 
+        a(href=`products/${product._id}`)
+            h2= product.name 
+        ul 
+            li= product.price 
+            li= product.stock 
+
 block content 
     h1 Manage Products 
-    ul 
-        for product in products 
-            li= product.name
+    +productList
