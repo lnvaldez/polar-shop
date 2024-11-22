@@ -17,7 +17,7 @@ const renderProductPage = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const product = await Product.findById(id);
+    const product = await Product.findById({ _id: id });
     res.render(`admin/product`, { product });
   } catch (error) {
     console.error({ error: error.message });
