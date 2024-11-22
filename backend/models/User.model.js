@@ -21,8 +21,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
-
 //* Static
 userSchema.statics.register = async function (name, password) {
   if (!name || !password) {
@@ -43,4 +41,28 @@ userSchema.statics.register = async function (name, password) {
   const hash = await bcrypt.hash(password, salt);
 
   const user = await this.create({ name, password: hash });
+
+  return user;
 };
+
+userSchema.statics.login = async function (name, password) {
+  if (!name || !password) {
+    throw Error("Fill out all required fields");
+  }
+
+  const user = await this.findOne({ name });
+
+  if (!user) {
+    throw Error(`User '${name}' does not exist`);
+  }
+
+  const match = await bcrypt.compare(password, user.password);
+
+  if (!match) {
+    throw Error("Incorrect password");
+  }
+
+  return user;
+};
+
+module.exports = mongoose.model("User", userSchema);
