@@ -11,6 +11,7 @@ block content
                 tr
                     th ID Code
                     th Product
+                    th Category
                     th Price
                     th Stock
                     th Status
@@ -21,11 +22,12 @@ block content
                         td= product._id
                         td
                             a(href=`products/${product._id}`)= product.name
+                        td= product.category 
                         td $#{product.price}
-                        td= product.stock
+                        td= product.quantity
                         td
-                            span.status(class=product.stock > 0 ? 'in-stock' : 'out-of-stock')
-                                = product.stock > 0 ? 'In Stock' : 'Sold Out'
+                            span.status(class=product.quantity > 0 ? 'in-stock' : 'out-of-stock')
+                                = product.quantity > 0 ? 'In Stock' : 'Sold Out'
                         td.actions
                             button.edit-btn
                                 i.fas.fa-edit
