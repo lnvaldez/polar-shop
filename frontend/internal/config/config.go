@@ -8,14 +8,14 @@ import (
 type Config struct {
 	MongoURI string
 	DatabaseName string 
-	Port int 
+	ServerPort int 
 }
 
 func Load() *Config {
 	return &Config{
 		MongoURI: os.Getenv("MONGO_URI"),
 		DatabaseName: os.Getenv("DB_NAME"),
-		Port: getEnvAsInt("SERVER_PORT", 5001),
+		ServerPort: getEnvAsInt("SERVER_PORT", 5001),
 	}
 }
 
