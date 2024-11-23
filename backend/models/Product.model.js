@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    available: {
+    isAvailable: {
       type: Boolean,
       default: false,
     },
