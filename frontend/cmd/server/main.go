@@ -8,7 +8,7 @@ import (
 	"html/template"
 	"net/http"
 
-	"polar-shop/frontend/internal/config/config.go"
+	"frontend/internal/config"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
