@@ -25,7 +25,7 @@ block content
                         td= product.stock
                         td
                             span.status(class=product.stock > 0 ? 'in-stock' : 'out-of-stock')
-                                = product.stock > 0 ? 'In Stock' : 'Out of Stock'
+                                = product.stock > 0 ? 'In Stock' : 'Sold Out'
                         td.actions
                             button.edit-btn
                                 i.fas.fa-edit
