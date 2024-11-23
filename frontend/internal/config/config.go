@@ -1,14 +1,28 @@
 package config 
 
-import "os"
+import (
+	"os"
+	"strconv"
+)
 
 type Config struct {
-	DatabaseURL string
+	MongoURI string
+	DatabaseName string 
+	Port int 
 }
 
 func Load() *Config {
 	return &Config{
-		DatabaseURL: os.Getenv("MONGO_URI"),
+		MongoURI: os.Getenv("MONGO_URI"),
+		DatabaseName: os.Getenv("DB_NAME"),
+		Port: getPort("SERVER_PORT"),
 	}
 }
 
+func getPort(key string) int {
+	port, err := strconv.Atoi(os.Getenv(key))
+	if err != nil {
+		return 5001
+	}
+	return port
+}
