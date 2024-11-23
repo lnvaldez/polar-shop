@@ -71,6 +71,7 @@ nav a {
   display: table;
   width: 300px;
   padding: 10px;
+  transition: transform 0.3s ease;
 }
 
 nav .fas {
@@ -89,9 +90,8 @@ nav .fas {
   margin-left: 10px;
 }
 
-nav a:hover {
-  color: var(--text-dark);
-  border-radius: 8px;
+nav a:not(.logo):hover {
+  transform: translateY(-5px);
 }
 
 .logout {
