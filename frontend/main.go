@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"html/template"
+	"net/http"
 
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
@@ -57,15 +58,23 @@ func main() {
 	}
 	fmt.Printf("%s\n", jsonData)
 
-	p := page{Header: "Wallace", Paragraph: "Ninja"}
-	fmt.Println(p)
-	templatePath := "C:/Users/lnval/Code/act/me/polar-shop/frontend/template.html"
-	t, err := template.New("template.html").ParseFiles(templatePath)
-	if err != nil {
-		fmt.Println(err)
-	}
-	err = t.Execute(os.Stdout, p)
-	if err != nil {
-		fmt.Println(err)
-	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		p := page{Header: "Wallace", Paragraph: "Ninja"}
+		fmt.Println(p)
+		templatePath := "C:/Users/lnval/Code/act/me/polar-shop/frontend/template.html"
+		t, err := template.ParseFiles(templatePath)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		err = t.Execute(w, p)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	})
+
+	fmt.Println("Server starting on :8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
+
 }
