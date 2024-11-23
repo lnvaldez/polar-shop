@@ -15,14 +15,14 @@ func Load() *Config {
 	return &Config{
 		MongoURI: os.Getenv("MONGO_URI"),
 		DatabaseName: os.Getenv("DB_NAME"),
-		Port: getPort("SERVER_PORT"),
+		Port: getEnvAsInt("SERVER_PORT", 5001),
 	}
 }
 
-func getPort(key string) int {
+func getEnvAsInt(key string, fallback int) int {
 	port, err := strconv.Atoi(os.Getenv(key))
 	if err != nil {
-		return 5001
+		return fallback
 	}
 	return port
 }
