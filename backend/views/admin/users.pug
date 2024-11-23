@@ -9,13 +9,21 @@ block content
             thead
                 tr
                     th Name
+                    th Email 
                     th Role
+                    th Status
                     th Actions
             tbody
                 each user in users
                     tr
                         td= user.name 
+                        td= user.email
                         td= user.role
+                        td
+                            if user.isDeleted 
+                                span.status-icon.deleted ❌
+                            else 
+                                span.status-icon.active ✅
                         td.actions
                             button.edit-btn
                                 i.fas.fa-edit
