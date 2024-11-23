@@ -6,12 +6,18 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"html/template"
 
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+type page struct {
+	Header string 
+	Paragraph string 
+}
 
 func main() {
 	if err := godotenv.Load(); err != nil {
@@ -50,4 +56,16 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("%s\n", jsonData)
+
+	p := page{Header: "Wallace", Paragraph: "Ninja"}
+	fmt.Println(p)
+	templatePath := "C:/Users/lnval/Code/act/me/polar-shop/frontend/template.html"
+	t, err := template.New("template.html").ParseFiles(templatePath)
+	if err != nil {
+		fmt.Println(err)
+	}
+	err = t.Execute(os.Stdout, p)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
