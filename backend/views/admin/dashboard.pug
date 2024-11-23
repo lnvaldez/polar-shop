@@ -7,19 +7,19 @@ block content
             p Welcome back, Paula 😀
 
         .boxes
-            .box
+            a.box(href="/admin/products") 
                 p Products
-                .amount-container
+                .stat-display
                     i.fas.fa-box
                     p= totalProducts
-            .box
+            a.box(href="/admin/users") 
                 p Users
-                .amount-container
+                .stat-display
                     i.fas.fa-user
                     p 25
                 
-            .box
+            a.box(href="/admin/orders") 
                 p Orders
-                .amount-container
+                .stat-display
                     i.fas.fa-shopping-cart
                     p 6
