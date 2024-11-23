@@ -38,7 +38,7 @@ func main() {
 	var result bson.M 
 	err = coll.FindOne(context.TODO(), bson.D{{Key: "name", Value: name}}).Decode(&result)
 	if err == mongo.ErrNoDocuments {
-		fmt.Printf("Product not found with name $s\n", name)
+		fmt.Printf("Product not found with name %s\n", name)
 		return
 	}
 	if err != nil {
