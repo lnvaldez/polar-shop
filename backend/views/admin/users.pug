@@ -1,3 +1,23 @@
 extends ../layouts/main 
 
 block content 
+    .container 
+        .header
+            h1 Users
+        
+        table.products-table
+            thead
+                tr
+                    th Name
+                    th Role
+                    th Actions
+            tbody
+                each user in users
+                    tr
+                        td= user.name 
+                        td= user.role
+                        td.actions
+                            button.edit-btn
+                                i.fas.fa-edit
+                            button.delete-btn
+                                i.fas.fa-trash
