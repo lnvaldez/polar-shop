@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 	"html/template"
 	"net/http"
 
-	"github.com/joho/godotenv"
+	"polar-shop/frontend/internal/config/config.go"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -21,24 +21,14 @@ type page struct {
 }
 
 func main() {
-	if err := godotenv.Load(); err != nil {
-		log.Println("No .env file found");
-	}
+	cfg := config.Load()
 
-	uri := os.Getenv("MONGO_URI")
-
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
-
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(cfg.MongoURI))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
+	defer client.Disconnect(context.TODO())
 
-	defer func() {
-		if err := client.Disconnect((context.TODO())); err != nil {
-			panic(err)
-		}
-	}()
-	
 	coll := client.Database("polar_shop").Collection("products")
 	name := "Bonnet"
 
