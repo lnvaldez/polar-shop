@@ -21,7 +21,7 @@ const renderAllProductsPage = async (req, res) => {
       isAvailable: -1,
       createdAt: -1,
     });
-    res.render("admin/products", { products });
+    res.render("admin/productList", { products });
   } catch (error) {
     console.error({ error: error.message });
     res.render("error");
@@ -33,7 +33,7 @@ const renderProductPage = async (req, res) => {
 
   try {
     const product = await Product.findById({ _id: id });
-    res.render(`admin/product`, { product });
+    res.render(`admin/productDetail`, { product });
   } catch (error) {
     console.error({ error: error.message });
     res.render("error");
