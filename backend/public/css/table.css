@@ -70,11 +70,27 @@
 }
 
 /* Status Indicators */
+.unavailable-product {
+  opacity: 0.6;
+  background-color: #f8f8f8;
+}
+
+.unavailable-label {
+  color: #ff4d4f;
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
 .status {
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 500;
+}
+
+.status.unavailable {
+  background-color: #ffa39e;
+  color: #cf1322;
 }
 
 .in-stock {
