@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
@@ -22,38 +26,42 @@ const userSchema = new mongoose.Schema(
 );
 
 //* Static
-userSchema.statics.register = async function (name, password) {
-  if (!name || !password) {
+userSchema.statics.register = async function (name, email, password) {
+  if (!name || !email || !password) {
     throw Error("Fill out all required fields");
+  }
+
+  if (!validator.isEmail(email)) {
+    throw Error("Invalid email");
   }
 
   if (!validator.isStrongPassword(password)) {
     throw Error("Password is not strong enough");
   }
 
-  const exists = await this.findOne({ name });
+  const exists = await this.findOne({ email });
 
   if (exists) {
-    throw Error("Name already in use");
+    throw Error("Email already in use");
   }
 
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
-  const user = await this.create({ name, password: hash });
+  const user = await this.create({ name, email, password: hash });
 
   return user;
 };
 
-userSchema.statics.login = async function (name, password) {
-  if (!name || !password) {
+userSchema.statics.login = async function (email, password) {
+  if (!email || !password) {
     throw Error("Fill out all required fields");
   }
 
-  const user = await this.findOne({ name });
+  const user = await this.findOne({ email });
 
   if (!user) {
-    throw Error(`User '${name}' does not exist`);
+    throw Error(`User with email: '${email}' does not exist`);
   }
 
   const match = await bcrypt.compare(password, user.password);
