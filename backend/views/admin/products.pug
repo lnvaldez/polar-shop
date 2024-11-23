@@ -1,11 +1,33 @@
 extends ../layouts/main 
 
-mixin productList 
-    for product in products 
-        a(href=`products/${product._id}`)
-            h2= product.name 
-        ul 
-            li= product.price 
-            li= product.stock 
-
 block content 
+    .container 
+        .header
+            h1 All Products
+            button.add-btn Add Product 
+        
+        table.products-table
+            thead
+                tr
+                    th ID Code
+                    th Product
+                    th Price
+                    th Stock
+                    th Status
+                    th Actions
+            tbody
+                each product in products
+                    tr
+                        td= product._id
+                        td
+                            a(href=`products/${product._id}`)= product.name
+                        td $#{product.price}
+                        td= product.stock
+                        td
+                            span.status(class=product.stock > 0 ? 'in-stock' : 'out-of-stock')
+                                = product.stock > 0 ? 'In Stock' : 'Out of Stock'
+                        td.actions
+                            button.edit-btn
+                                i.fas.fa-edit
+                            button.delete-btn
+                                i.fas.fa-trash
