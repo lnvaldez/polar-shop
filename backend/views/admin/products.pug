@@ -13,21 +13,26 @@ block content
                     th Product
                     th Category
                     th Price
-                    th Stock
+                    th Quantity
                     th Status
                     th Actions
             tbody
                 each product in products
-                    tr
+                    tr(class=product.isAvailable ? '' : 'unavailable-product')
                         td= product._id
                         td
                             a(href=`products/${product._id}`)= product.name
+                            if !product.isAvailable 
+                                span.unavailable-label (Unavailable)
                         td= product.category 
                         td $#{product.price}
                         td= product.quantity
                         td
-                            span.status(class=product.quantity > 0 ? 'in-stock' : 'out-of-stock')
-                                = product.quantity > 0 ? 'In Stock' : 'Sold Out'
+                            if product.isAvailable
+                                span.status(class=product.quantity > 0 ? 'in-stock' : 'out-of-stock')
+                                    = product.quantity > 0 ? 'In Stock' : 'Sold Out'
+                            else 
+                                span.status.unavailable Not Available
                         td.actions
                             button.edit-btn
                                 i.fas.fa-edit
