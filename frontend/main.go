@@ -45,7 +45,14 @@ func init() {
 func main() {
 	defer mongoClient.Disconnect(context.Background())
 
-    tmpl := template.Must(template.ParseGlob("templates/*.html"))
+    tmpl := template.Must(template.ParseFiles(
+		"templates/layout.html",
+		"templates/product_list.html",
+		"templates/register.html",
+		"templates/login.html",
+		"templates/partials/footer.html",
+		"templates/partials/navbar.html", 
+	))
 
     coll := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
 
