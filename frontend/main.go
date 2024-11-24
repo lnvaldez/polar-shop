@@ -59,7 +59,15 @@ func main() {
 	r.HandleFunc("/register", handlers.RenderRegisterPage(tmpl)).Methods("GET")
 	r.HandleFunc("/login", handlers.RenderLoginPage(tmpl)).Methods("GET")
 
+	c := cors.New(cors.Options{
+		AllowedOrigins: []string{"http://localhost:5001"},
+		AllowedMethods: []string{"GET", "POST"},
+		AllowedHeaders: []string{"Content-Type", "Origin", "Accept", "*"},
+	})
+
+	corsHandler := c.Handler(r)
+
 	log.Println("⭐ Server running on port 5001")
-	http.ListenAndServe(":5001", r)
+	http.ListenAndServe(":5001", corsHandler)
 }
 
