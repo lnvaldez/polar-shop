@@ -17,7 +17,7 @@ block content
                 each user in users
                     tr
                         td= user.name 
-                        td= user.email
+                        td.email= user.email
                         td= user.role
                         td
                             if user.isDeleted 
