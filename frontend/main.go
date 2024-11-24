@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"polar-shop/service"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -40,6 +41,10 @@ func init() {
 
 func main() {
 	defer mongoClient.Disconnect(context.Background())
+
+	coll := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
+
+	productService := service.ProductService{MongoCollection: coll}
 
 	r := mux.NewRouter()
 
