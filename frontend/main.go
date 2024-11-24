@@ -50,6 +50,8 @@ func main() {
 
 	r.HandleFunc("/health", healthHandler).Methods(http.MethodGet)
 
+	r.HandleFunc("/products", productService.GetAvailableProducts).Methods(http.MethodGet)
+
 	log.Println("⭐ Server running on port 5001")
 	http.ListenAndServe(":5001", r)
 }
