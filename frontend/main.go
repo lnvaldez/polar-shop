@@ -44,6 +44,9 @@ func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/health", healthHandler).Methods(http.MethodGet)
+
+	log.Println("⭐ Server running on port 5001")
+	http.ListenAndServe(":5001", r)
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
