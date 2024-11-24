@@ -2,6 +2,7 @@ require("dotenv").config();
 
 //* Requirements
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 
 /* Imports */
@@ -20,6 +21,13 @@ app.set("views", path.join(__dirname, "views"));
 
 //* App use
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "http://localhost:5001",
+    methods: ["POST"],
+  })
+);
 
 app.use(express.static(path.join(__dirname, "public")));
 
