@@ -14,7 +14,7 @@
 
     {{template "navbar" .}}
 
-    <main>{{template "content" .}}</main>
+    <main>{{block "content" .}}{{end}}</main>
 
     {{template "footer" .}}
   </body>
