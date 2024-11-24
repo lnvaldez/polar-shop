@@ -1,8 +1,12 @@
 package main
 
 import (
+	"os"
+	"context"
+
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 var mongoClient *mongo.Client
@@ -14,7 +18,7 @@ func init() {
 		panic(err)
 	}
 
-	
+	mongo.Connect(context.Background(), options.Client().ApplyURI(os.Getenv("MONGO_URI")))
 }
 
 func main() {
