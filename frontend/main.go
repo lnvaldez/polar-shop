@@ -60,7 +60,7 @@ func main() {
 	r.HandleFunc("/login", handlers.RenderLoginPage(tmpl)).Methods("GET")
 
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"http://localhost:5001"},
+		AllowedOrigins: []string{"http://localhost:5000"},
 		AllowedMethods: []string{"GET", "POST"},
 		AllowedHeaders: []string{"Content-Type", "Origin", "Accept", "*"},
 	})
