@@ -22,7 +22,7 @@ func ProductListHandler(productService *service.ProductService, tmpl *template.T
             Products: prods,
         }
 
-        err = tmpl.ExecuteTemplate(w, "product_list.html", data)
+        err = tmpl.ExecuteTemplate(w, "layout", data)
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
         }
