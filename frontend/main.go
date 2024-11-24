@@ -55,6 +55,7 @@ func main() {
     r := mux.NewRouter()
 
     r.HandleFunc("/products", handlers.ProductListHandler(productService, tmpl)).Methods("GET")
+	r.HandleFunc("/register", handlers.RenderRegisterPage(tmpl)).Methods("GET")
 	r.HandleFunc("/login", handlers.RenderLoginPage(tmpl)).Methods("GET")
 
 	log.Println("⭐ Server running on port 5001")
