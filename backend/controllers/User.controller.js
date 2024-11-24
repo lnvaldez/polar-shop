@@ -6,10 +6,10 @@ const generateToken = (_id) => {
 };
 
 const register = async (req, res) => {
-  const { name, password } = req.body;
+  const { name, email, password } = req.body;
 
   try {
-    const user = await User.register(name, password);
+    const user = await User.register(name, email, password);
 
     res.status(200).json({ name });
   } catch (error) {
