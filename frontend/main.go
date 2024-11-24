@@ -10,6 +10,7 @@ import (
 	"polar-shop/handlers"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
