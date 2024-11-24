@@ -6,6 +6,7 @@ const {
   renderAllProductsPage,
   renderProductPage,
   renderUsersPage,
+  renderSettingsPage,
 } = require("../controllers/Admin.controller");
 
 const router = express.Router();
@@ -23,5 +24,6 @@ router.get("/users", renderUsersPage);
 //* Orders?
 
 //* Settings
+router.get("/settings", renderSettingsPage);
 
 module.exports = router;
