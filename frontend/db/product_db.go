@@ -14,7 +14,7 @@ type ProductDB struct {
 	MongoCollection *mongo.Collection
 }
 
-func (db *ProductDB) GetAvailableProducts(prod * model.Product) ([]model.Product, error) {
+func (db *ProductDB) GetAvailableProducts() ([]model.Product, error) {
 	result, err := db.MongoCollection.Find(context.Background(), bson.D{})
 
 	if err != nil {
