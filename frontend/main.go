@@ -3,8 +3,10 @@ package main
 import (
 	"context"
 	"log"
+	"net/http"
 	"os"
 
+	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -38,4 +40,13 @@ func init() {
 
 func main() {
 	defer mongoClient.Disconnect(context.Background())
+
+	r := mux.NewRouter()
+
+	r.HandleFunc("/health", healthHandler).Methods(http.MethodGet)
+}
+
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Running..."))
 }
