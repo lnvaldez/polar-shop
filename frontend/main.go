@@ -14,6 +14,7 @@ import (
 var mongoClient *mongo.Client
 
 func init() {
+	
 	err := godotenv.Load()
 
 	if err != nil {
@@ -36,5 +37,5 @@ func init() {
 }
 
 func main() {
-	
+	defer mongoClient.Disconnect(context.Background())
 }
