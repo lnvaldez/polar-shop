@@ -1,0 +1,16 @@
+{{define "product_list.html"}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Available Products</title>
+  </head>
+  <body>
+    <h1>Available Products</h1>
+    <ul>
+      {{range .Products}}
+      <li>{{.Name}} - {{.Price}}</li>
+      {{end}}
+    </ul>
+  </body>
+</html>
+{{end}}
