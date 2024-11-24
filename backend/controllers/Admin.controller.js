@@ -50,6 +50,15 @@ const renderUsersPage = async (req, res) => {
   }
 };
 
+const renderOrdersPage = async (req, res) => {
+  try {
+    res.render("admin/orders");
+  } catch (error) {
+    console.error({ error: error.message });
+    res.render("error");
+  }
+};
+
 const renderSettingsPage = async (req, res) => {
   try {
     res.render("admin/settings");
@@ -64,5 +73,6 @@ module.exports = {
   renderAllProductsPage,
   renderProductPage,
   renderUsersPage,
+  renderOrdersPage,
   renderSettingsPage,
 };
