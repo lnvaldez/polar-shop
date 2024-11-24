@@ -50,9 +50,19 @@ const renderUsersPage = async (req, res) => {
   }
 };
 
+const renderSettingsPage = async (req, res) => {
+  try {
+    res.render("admin/settings");
+  } catch (error) {
+    console.error({ error: erro.message });
+    res.render("error");
+  }
+};
+
 module.exports = {
   renderAdminDashboard,
   renderAllProductsPage,
   renderProductPage,
   renderUsersPage,
+  renderSettingsPage,
 };
