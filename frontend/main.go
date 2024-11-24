@@ -4,8 +4,10 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"html/template"
 	"os"
 	"polar-shop/service"
+	"polar-shop/handlers"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -42,21 +44,19 @@ func init() {
 func main() {
 	defer mongoClient.Disconnect(context.Background())
 
-	coll := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
+    tmpl := template.Must(template.ParseGlob("templates/*.html"))
 
-	productService := service.ProductService{MongoCollection: coll}
+    coll := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
 
-	r := mux.NewRouter()
+    productService := &service.ProductService{
+        MongoCollection: coll,
+    }
 
-	r.HandleFunc("/health", healthHandler).Methods(http.MethodGet)
-
-	r.HandleFunc("/products", productService.GetAvailableProducts).Methods(http.MethodGet)
+    r := mux.NewRouter()
+	
+    r.HandleFunc("/products", handlers.ProductListHandler(productService, tmpl)).Methods("GET")
 
 	log.Println("⭐ Server running on port 5001")
 	http.ListenAndServe(":5001", r)
 }
 
-func healthHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Running..."))
-}
