@@ -54,6 +54,10 @@
   position: relative;
 }
 
+.products-table tr td.email {
+  text-transform: lowercase;
+}
+
 .products-table tr:hover {
   background-color: #f8f9fa;
 }
