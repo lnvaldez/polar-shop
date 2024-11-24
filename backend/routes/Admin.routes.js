@@ -6,6 +6,7 @@ const {
   renderAllProductsPage,
   renderProductPage,
   renderUsersPage,
+  renderOrdersPage,
   renderSettingsPage,
 } = require("../controllers/Admin.controller");
 
@@ -21,7 +22,8 @@ router.get("/products/:id", renderProductPage);
 //* Users
 router.get("/users", renderUsersPage);
 
-//* Orders?
+//* Orders
+router.get("/orders", renderOrdersPage);
 
 //* Settings
 router.get("/settings", renderSettingsPage);
