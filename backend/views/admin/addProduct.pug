@@ -19,8 +19,16 @@ block content
             
             .form-group
                 label(for="category") Category:
-                input#category(type="text" name="category" required)
-            
+                select#category(name="category" required)
+                    option(value="") Select a category
+                    option(value="Fashion & Accessories") Fashion & Accessories
+                    option(value="Technology & Gadgets") Technology & Gadgets
+                    option(value="Outdoor & Sports Equipment") Outdoor & Sports Equipment
+                    option(value="Home & Lifestyle") Home & Lifestyle
+                    option(value="Food & Beverages") Food & Beverages
+                    option(value="Grooming & Personal Care") Grooming & Personal Care
+                    option(value="Entertainment") Entertainment
+                    
             .form-group
                 label(for="price") Price:
                 input#price(type="number" name="price" step="0.01" required)
