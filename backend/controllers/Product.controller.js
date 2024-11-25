@@ -72,6 +72,30 @@ const getProduct = async (req, res) => {
 };
 
 //* ..Update
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name, category, price, quantity } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  try {
+    const product = await Product.findByIdAndUpdate(
+      { _id: id },
+      {
+        name,
+        category,
+        price,
+        quantity,
+      }
+    );
+    res.redirect("/admin/products");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const updateTotalStock = async (req, res) => {
   const { id } = req.params;
   const { stock } = req.body;
@@ -197,6 +221,7 @@ module.exports = {
   getAllProducts,
   getAvailableProducts,
   getProduct,
+  updateProduct,
   updateTotalStock,
   increaseStockByOne,
   decreaseStockByOne,
