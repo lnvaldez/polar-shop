@@ -23,7 +23,7 @@ const login = async (req, res) => {
   try {
     const user = await User.login(email, password);
 
-    const token = generateToken(user._id);
+    const token = generateToken(user._id, user.role);
 
     req.session.token = token;
 
