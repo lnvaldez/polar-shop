@@ -1,0 +1,145 @@
+/* product-detail.css */
+
+.container {
+  max-width: 800px;
+  margin-left: 300px; /* Adjusted to account for the sidebar */
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: var(--text-dark);
+}
+
+.product-id {
+  font-size: 16px;
+  color: var(--text-gray);
+}
+
+.edit-product-form {
+  background-color: var(--text-white);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px var(--shadow-sm);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--text-gray);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.save-btn {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  margin-right: 10px;
+}
+
+.save-btn:hover {
+  background-color: #3a7ae0;
+  transform: translateY(-2px);
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+.cancel-btn:hover {
+  background-color: #da190b;
+  transform: translateY(-2px);
+}
+
+.danger-zone {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffebee;
+  border-radius: 10px;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: var(--text-white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #da190b;
+  transform: translateY(-2px);
+}
+
+.delete-btn i {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .save-btn,
+  .cancel-btn {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
