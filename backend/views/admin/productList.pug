@@ -18,23 +18,34 @@ block content
                     th Actions
             tbody
                 each product in products
-                    tr(class=product.isAvailable ? '' : 'unavailable-product')
+                    tr(class=`${product.isAvailable ? '' : 'unavailable-product'} ${product.isDeleted ? 'deleted-product' : ''}`)
                         td= product._id
                         td
                             a(href=`products/${product._id}`)= product.name
                             if !product.isAvailable 
                                 span.unavailable-label (Unavailable)
+                            if product.isDeleted
+                                span.deleted-label (Deleted)
                         td= product.category 
                         td $#{product.price}
                         td= product.quantity
                         td
-                            if product.isAvailable
+                            if product.isDeleted
+                                span.status.deleted Deleted
+                            else if product.isAvailable
                                 span.status(class=product.quantity > 0 ? 'in-stock' : 'out-of-stock')
                                     = product.quantity > 0 ? 'In Stock' : 'Sold Out'
                             else 
                                 span.status.unavailable Not Available
                         td.actions
-                            button.edit-btn
-                                i.fas.fa-edit
-                            button.delete-btn
-                                i.fas.fa-trash
+                            if !product.isDeleted
+                                button.edit-btn
+                                    i.fas.fa-edit
+                                button.delete-btn
+                                    i.fas.fa-trash
+                            else
+                                button.edit-btn
+                                    i.fas.fa-edit
+                                form.set-deleted-product-form(action=`/products/delete/${product._id}` method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');")
+                                    button.restore-btn(type="submit")
+                                        i.fas.fa-undo
