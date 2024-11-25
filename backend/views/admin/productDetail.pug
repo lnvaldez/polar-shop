@@ -9,7 +9,7 @@ block content
             h1= product.name
             p.product-id ID: #{product._id}
         
-        form.edit-product-form(action=`/admin/products/${product._id}/update` method="POST")
+        form.edit-product-form(action=`/products/update/${product._id}` method="POST")
             .form-group
                 label(for="name") Product Name:
                 input#name(type="text" name="name" value=product.name required)
