@@ -33,4 +33,9 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const logout = async (req, res) => {
+  req.session.destroy();
+  return res.redirect("http://localhost:5001/login");
+};
+
+module.exports = { register, login, logout };
