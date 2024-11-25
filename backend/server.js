@@ -2,6 +2,7 @@ require("dotenv").config();
 
 //* Requirements
 const express = require("express");
+const session = require("express-session");
 const cors = require("cors");
 const path = require("path");
 
@@ -26,6 +27,14 @@ app.use(
   cors({
     origin: "http://localhost:5001",
     methods: ["POST"],
+  })
+);
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
   })
 );
 
