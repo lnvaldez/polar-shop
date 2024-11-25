@@ -73,9 +73,19 @@
   background: red;
 }
 
+.unavailable-btn:hover {
+  background: rgb(196, 0, 0);
+  transform: translateY(-2px);
+}
+
 .available-btn {
   color: #fff;
   background: green;
+}
+
+.available-btn:hover {
+  background: rgb(0, 94, 0);
+  transform: translateY(-2px);
 }
 
 .save-btn,
@@ -119,7 +129,8 @@
   border-radius: 10px;
 }
 
-.delete-btn {
+.delete-btn,
+.restore-btn {
   background-color: #f44336;
   color: var(--text-white);
   border: none;
@@ -132,12 +143,26 @@
   transition: background-color 0.3s, transform 0.3s;
 }
 
+.delete-btn {
+  background-color: #f44336;
+}
+
 .delete-btn:hover {
   background-color: #da190b;
   transform: translateY(-2px);
 }
 
-.delete-btn i {
+.restore-btn {
+  background-color: green;
+}
+
+.restore-btn:hover {
+  background-color: rgb(0, 117, 0);
+  transform: translateY(-2px);
+}
+
+.delete-btn i,
+.restore-btn i {
   margin-right: 10px;
 }
 
