@@ -1,8 +1,8 @@
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 
-const generateToken = (_id) => {
-  return jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "3d" });
+const generateToken = (_id, role) => {
+  return jwt.sign({ _id, role }, process.env.JWT_SECRET, { expiresIn: "3d" });
 };
 
 const register = async (req, res) => {
@@ -24,6 +24,8 @@ const login = async (req, res) => {
     const user = await User.login(email, password);
 
     const token = generateToken(user._id);
+
+    req.session.token = token;
 
     res.redirect("/admin/dashboard");
   } catch (error) {
