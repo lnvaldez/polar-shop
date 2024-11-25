@@ -25,7 +25,7 @@ const login = async (req, res) => {
 
     const token = generateToken(user._id);
 
-    res.status(200).json({ email, token });
+    res.redirect("/admin/dashboard");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
