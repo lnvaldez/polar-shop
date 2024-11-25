@@ -114,7 +114,8 @@
 }
 
 .edit-btn,
-.delete-btn {
+.delete-btn,
+.restore-btn {
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
@@ -134,4 +135,33 @@
 .edit-btn:hover,
 .delete-btn:hover {
   opacity: 0.8;
+}
+
+.deleted-product {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.deleted-product a {
+  color: inherit;
+}
+
+.deleted-label {
+  color: #ff0000;
+  font-style: italic;
+  margin-left: 5px;
+}
+
+.status.deleted {
+  background-color: #ff0000;
+  color: white;
+}
+
+.restore-btn {
+  color: #fff;
+  background-color: #4caf50;
+}
+
+.restore-btn:hover {
+  background-color: #45a049;
 }
