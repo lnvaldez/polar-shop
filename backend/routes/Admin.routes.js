@@ -1,5 +1,8 @@
 /* Imports */
 const express = require("express");
+const { allowRoles } = require("../middleware/role");
+const { auth } = require("../middleware/auth");
+
 //* Controller functions
 const {
   renderAdminDashboard,
@@ -12,6 +15,9 @@ const {
 } = require("../controllers/Admin.controller");
 
 const router = express.Router();
+
+router.use(auth);
+router.use(allowRoles(["admin"]));
 
 //* Dashboard
 router.get("/dashboard", renderAdminDashboard);
