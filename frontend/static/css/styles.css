@@ -1,0 +1,112 @@
+:root {
+  --primary-color: #4c90ff;
+  --primary-gradient: linear-gradient(145deg, #4c90ff, #88baff);
+  --text-white: #fff;
+  --text-dark: #333;
+  --text-gray: #666;
+  --bg-light: #f0f4fb;
+  --shadow-sm: rgba(0, 0, 0, 0.1);
+  --shadow-md: rgba(0, 0, 0, 0.15);
+  --font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  background: var(--bg-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  max-width: 400px;
+  width: 90%;
+  background: var(--text-white);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow-sm);
+  text-align: center;
+}
+
+.login-header h1 {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.login-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--shadow-sm);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(76, 144, 255, 0.1);
+}
+
+.login-form .form-actions {
+  margin-top: 20px;
+}
+
+.login-form .login-btn {
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  padding: 12px 24px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form .login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px var(--shadow-md);
+}
+
+.forgot-password,
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover,
+.register-link a:hover {
+  color: var(--text-dark);
+}
+
+.register-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-gray);
+}
