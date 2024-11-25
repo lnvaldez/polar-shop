@@ -58,6 +58,26 @@
   justify-content: flex-end;
 }
 
+.unavailable-btn,
+.available-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.unavailable-btn {
+  color: #fff;
+  background: red;
+}
+
+.available-btn {
+  color: #fff;
+  background: green;
+}
+
 .save-btn,
 .cancel-btn {
   padding: 10px 20px;
@@ -90,7 +110,9 @@
   transform: translateY(-2px);
 }
 
-.danger-zone {
+.status-zone {
+  display: flex;
+  justify-content: space-between;
   margin-top: 40px;
   padding: 20px;
   background-color: #ffebee;
