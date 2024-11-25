@@ -6,7 +6,7 @@ const { Product } = require("../models");
 
 //* ..Create
 const addProduct = async (req, res) => {
-  const { name, price, stock, image, available, description } = req.body;
+  const { name, description, category, price, quantity, image } = req.body;
 
   let emptyFields = [];
 
@@ -22,11 +22,11 @@ const addProduct = async (req, res) => {
   try {
     const product = await Product.create({
       name,
+      category,
       price,
-      stock,
-      image,
-      available,
+      quantity,
       description,
+      image,
     });
     res.status(200).json(product);
   } catch (error) {
