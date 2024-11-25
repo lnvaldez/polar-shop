@@ -1,0 +1,34 @@
+extends ../layouts/main
+
+block append head 
+    link(rel="stylesheet", href="/css/product-detail.css")
+
+block content
+    .container
+        .header
+            h1 Add Product
+        
+        form.add-product-form(action='/products' method="POST")
+            .form-group
+                label(for="name") Product Name:
+                input#name(type="text" name="name" required)
+            
+            .form-group
+                label(for="category") Category:
+                input#category(type="text" name="category" required)
+            
+            .form-group
+                label(for="price") Price:
+                input#price(type="number" name="price" step="0.01" required)
+            
+            .form-group
+                label(for="quantity") Quantity:
+                input#quantity(type="number" name="quantity" required)
+
+            .form-group 
+                label(for="image") Image: 
+                input#image(type="text" name="image" required)
+
+            .form-actions
+                button.save-btn(type="submit") Add Product
+                a.cancel-btn(href="/admin/products") Cancel  
