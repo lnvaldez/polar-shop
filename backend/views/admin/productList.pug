@@ -21,7 +21,7 @@ block content
             tbody
                 each product in products
                     tr(class=`${product.isAvailable ? '' : 'unavailable-product'} ${product.isDeleted ? 'deleted-product' : ''}`)
-                        td= product._id
+                        td.id= product._id
                         td.thumbnail 
                             img(src=product.image, alt=product.name width="50" height="50")
                         td
