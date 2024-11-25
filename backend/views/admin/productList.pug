@@ -39,13 +39,16 @@ block content
                                 span.status.unavailable Not Available
                         td.actions
                             if !product.isDeleted
-                                button.edit-btn
-                                    i.fas.fa-edit
-                                button.delete-btn
-                                    i.fas.fa-trash
+                                a(href=`products/${product._id}`)
+                                    button.edit-btn
+                                        i.fas.fa-edit
+                                form.set-deleted-product-form(action=`/products/delete/${product._id}` method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');")                                        
+                                    button.delete-btn
+                                        i.fas.fa-trash
                             else
-                                button.edit-btn
-                                    i.fas.fa-edit
-                                form.set-deleted-product-form(action=`/products/delete/${product._id}` method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');")
+                                a(href=`products/${product._id}`)
+                                    button.edit-btn
+                                        i.fas.fa-edit
+                                form.set-deleted-product-form(action=`/products/delete/${product._id}` method="POST" onsubmit="return confirm('Are you sure you want to restore this product?');")
                                     button.restore-btn(type="submit")
                                         i.fas.fa-undo
