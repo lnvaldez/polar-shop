@@ -1,8 +1,6 @@
-/* product-detail.css */
-
 .container {
   max-width: 800px;
-  margin-left: 300px; /* Adjusted to account for the sidebar */
+  margin-left: 300px;
   padding: 30px;
 }
 
