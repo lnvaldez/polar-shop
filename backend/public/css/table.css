@@ -110,7 +110,9 @@
 /* Action Buttons */
 .actions {
   display: flex;
+  height: 110px;
   gap: 10px;
+  align-items: center;
 }
 
 .edit-btn,
@@ -168,7 +170,8 @@
 
 .thumbnail {
   width: 50px;
-  height: 80px;
+  height: 90px;
+  margin-right: 5px;
   overflow: hidden;
   border-radius: 5px;
 }
