@@ -137,7 +137,7 @@
   opacity: 0.8;
 }
 
-.deleted-product {
+.deleted-product td:not(.actions) {
   text-decoration: line-through;
   opacity: 0.6;
 }
