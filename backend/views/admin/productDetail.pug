@@ -25,16 +25,21 @@ block content
             .form-group
                 label(for="quantity") Quantity:
                 input#quantity(type="number" name="quantity" value=product.quantity required)
-            
-            .form-group
-                label(for="isAvailable") Available:
-                input#isAvailable(type="checkbox" name="isAvailable" checked=product.isAvailable)
-            
+
+            .form-group 
+                label(for="image") Image: 
+                input#image(type="text" name="image" value=product.image required)
+
             .form-actions
                 button.save-btn(type="submit") Save Changes
-                a.cancel-btn(href="/admin/products") Cancel
-        
-        .danger-zone
+                a.cancel-btn(href="/admin/products") Cancel    
+
+        .status-zone
+            form(action=`/products/status/${product._id}` method="POST")
+                if product.isAvailable
+                    button.unavailable-btn(type="submit") Make Unavailable
+                else
+                    button.available-btn(type="submit") Make Available
             form.delete-product-form(action=`/admin/products/${product._id}/delete` method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');")
                 button.delete-btn(type="submit")
                     i.fas.fa-trash
