@@ -19,6 +19,7 @@ const router = express.Router();
 // POST
 router.post("/", addProduct);
 router.post("/update/:id", updateProduct);
+router.post("/status/:id", setProductAvailability);
 
 // GET
 router.get("/", getAllProducts);
@@ -31,7 +32,6 @@ router.patch("/stock/incr/:id", increaseStockByOne);
 router.patch("/stock/dec/:id", decreaseStockByOne);
 router.patch("/stock/:id", updateTotalStock);
 // TODO router.patch("/:id", updateProductImage);
-router.patch("/status/:id", setProductAvailability);
 
 // DELETE
 router.delete("/:id", deleteProduct);
