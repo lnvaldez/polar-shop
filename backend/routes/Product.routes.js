@@ -6,6 +6,7 @@ const {
   getAllProducts,
   getAvailableProducts,
   getProduct,
+  updateProduct,
   updateTotalStock,
   increaseStockByOne,
   decreaseStockByOne,
@@ -17,6 +18,7 @@ const router = express.Router();
 
 // POST
 router.post("/", addProduct);
+router.post("/update/:id", updateProduct);
 
 // GET
 router.get("/", getAllProducts);
