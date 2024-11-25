@@ -24,8 +24,8 @@ block content
                         td.id= product._id
                         td.thumbnail 
                             img(src=product.image, alt=product.name width="50" height="50")
-                        td
-                            a(href=`products/${product._id}`)= product.name
+                        td.product-name-cell
+                            a.product-name(href=`products/${product._id}`)= product.name
                             if !product.isAvailable 
                                 span.unavailable-label (Unavailable)
                             if product.isDeleted
