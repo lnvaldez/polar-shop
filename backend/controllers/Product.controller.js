@@ -196,8 +196,6 @@ const setProductAvailability = async (req, res) => {
     return res.status(404).json({ error: "Product not found" });
   }
 
-  console.log("Updated availability");
-
   res.redirect(`/admin/products/${id}`);
 };
 
@@ -218,6 +216,26 @@ const deleteProduct = async (req, res) => {
   res.status(204).end();
 };
 
+const setIsDeleted = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  const product = await Product.findOneAndUpdate(
+    { _id: id },
+    [{ $set: { isDeleted: { $eq: [false, "$isDeleted"] } } }],
+    { new: true }
+  );
+
+  if (!product) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  res.redirect(`/admin/products/${id}`);
+};
+
 module.exports = {
   addProduct,
   getAllProducts,
@@ -229,4 +247,5 @@ module.exports = {
   decreaseStockByOne,
   setProductAvailability,
   deleteProduct,
+  setIsDeleted,
 };
