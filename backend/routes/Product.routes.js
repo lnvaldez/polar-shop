@@ -12,6 +12,7 @@ const {
   decreaseStockByOne,
   setProductAvailability,
   deleteProduct,
+  setIsDeleted,
 } = require("../controllers/Product.controller");
 
 const router = express.Router();
@@ -20,6 +21,7 @@ const router = express.Router();
 router.post("/", addProduct);
 router.post("/update/:id", updateProduct);
 router.post("/status/:id", setProductAvailability);
+router.post("/delete/:id", setIsDeleted);
 
 // GET
 router.get("/", getAllProducts);
