@@ -74,7 +74,7 @@ const getProduct = async (req, res) => {
 //* ..Update
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name, category, price, quantity } = req.body;
+  const { name, category, price, quantity, image } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Product not found" });
@@ -88,6 +88,7 @@ const updateProduct = async (req, res) => {
         category,
         price,
         quantity,
+        image,
       }
     );
     res.redirect("/admin/products");
