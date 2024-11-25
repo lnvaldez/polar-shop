@@ -188,7 +188,7 @@ const setProductAvailability = async (req, res) => {
 
   const product = await Product.findOneAndUpdate(
     { _id: id },
-    [{ $set: { available: { $eq: [false, "$available"] } } }],
+    [{ $set: { isAvailable: { $eq: [false, "$isAvailable"] } } }],
     { new: true }
   );
 
@@ -196,7 +196,9 @@ const setProductAvailability = async (req, res) => {
     return res.status(404).json({ error: "Product not found" });
   }
 
-  res.status(200).json(product);
+  console.log("Updated availability");
+
+  res.redirect(`/admin/products/${id}`);
 };
 
 //* ..Delete
