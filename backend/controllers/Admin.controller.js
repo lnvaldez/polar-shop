@@ -40,6 +40,15 @@ const renderProductPage = async (req, res) => {
   }
 };
 
+const renderAddProductPage = async (req, res) => {
+  try {
+    res.render("admin/addProduct");
+  } catch (error) {
+    console.error({ error: error.message });
+    res.render("error");
+  }
+};
+
 const renderUsersPage = async (req, res) => {
   try {
     const users = await User.find().sort({ createdAt: -1 });
@@ -72,6 +81,7 @@ module.exports = {
   renderAdminDashboard,
   renderAllProductsPage,
   renderProductPage,
+  renderAddProductPage,
   renderUsersPage,
   renderOrdersPage,
   renderSettingsPage,
