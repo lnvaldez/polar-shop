@@ -33,7 +33,7 @@ const renderProductPage = async (req, res) => {
 
   try {
     const product = await Product.findById({ _id: id });
-    res.render(`admin/productDetail`, { product });
+    res.render("admin/productDetail", { product });
   } catch (error) {
     console.error({ error: error.message });
     res.render("error");
