@@ -28,7 +28,7 @@ const addProduct = async (req, res) => {
       description,
       image,
     });
-    res.status(200).json(product);
+    res.redirect("/admin/products");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -197,7 +197,7 @@ const setProductAvailability = async (req, res) => {
     return res.status(404).json({ error: "Product not found" });
   }
 
-  res.redirect(`/admin/products/${id}`);
+  res.redirect(`/admin/products`);
 };
 
 //* ..Delete
@@ -234,7 +234,7 @@ const setIsDeleted = async (req, res) => {
     return res.status(404).json({ error: "Product not found" });
   }
 
-  res.redirect(`/admin/products/${id}`);
+  res.redirect(`/admin/products`);
 };
 
 module.exports = {
