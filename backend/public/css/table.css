@@ -54,6 +54,13 @@
   position: relative;
 }
 
+.products-table tr td.id {
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .products-table tr td.email {
   text-transform: lowercase;
 }
