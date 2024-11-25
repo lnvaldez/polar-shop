@@ -11,6 +11,7 @@ block content
             thead
                 tr
                     th ID Code
+                    th Thumbnail
                     th Product
                     th Category
                     th Price
@@ -21,6 +22,8 @@ block content
                 each product in products
                     tr(class=`${product.isAvailable ? '' : 'unavailable-product'} ${product.isDeleted ? 'deleted-product' : ''}`)
                         td= product._id
+                        td.thumbnail 
+                            img(src=product.image, alt=product.name width="50" height="50")
                         td
                             a(href=`products/${product._id}`)= product.name
                             if !product.isAvailable 
