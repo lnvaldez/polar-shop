@@ -5,6 +5,7 @@ const {
   renderAdminDashboard,
   renderAllProductsPage,
   renderProductPage,
+  renderAddProductPage,
   renderUsersPage,
   renderOrdersPage,
   renderSettingsPage,
@@ -18,6 +19,7 @@ router.get("/dashboard", renderAdminDashboard);
 //* Products
 router.get("/products", renderAllProductsPage);
 router.get("/products/:id", renderProductPage);
+router.get("/add/product", renderAddProductPage);
 
 //* Users
 router.get("/users", renderUsersPage);
