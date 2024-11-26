@@ -18,6 +18,13 @@
 }
 
 body {
+  background: rgb(224, 236, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(224, 236, 255, 1) 0%,
+    rgba(76, 144, 255, 1) 50%,
+    rgba(224, 236, 255, 1) 100%
+  );
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -77,6 +84,7 @@ body {
 
 .register-form .register-btn {
   background: var(--primary-gradient);
+  width: 100%;
   color: var(--text-white);
   padding: 12px 24px;
   margin-bottom: 20px;
