@@ -14,103 +14,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-family);
 }
 
 body {
-  background: url("/static/images/background.png") no-repeat center center fixed;
+  font-family: var(--font-family);
+  /* background: url("/static/images/background.png") no-repeat center center fixed; */
   background-size: cover;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.login-container {
-  max-width: 400px;
-  width: 90%;
-  background: var(--text-white);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px var(--shadow-sm);
-  text-align: center;
-}
-
-.login-header h1 {
-  color: var(--primary-color);
-  font-size: 28px;
-  font-weight: 600;
-  font-style: oblique;
-  margin-bottom: 20px;
-}
-
-.login-form .form-group {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.login-form label {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--text-dark);
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.login-form input {
-  width: 100%;
-  padding: 10px 15px;
-  border: 1px solid var(--shadow-sm);
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.login-form input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(76, 144, 255, 0.1);
-}
-
-.login-form .form-actions {
-  margin-top: 20px;
-}
-
-.login-form .login-btn {
-  background: var(--primary-gradient);
-  color: var(--text-white);
-  padding: 12px 24px;
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.login-form .login-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px var(--shadow-md);
-}
-
-.forgot-password,
-.register-link a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.forgot-password:hover,
-.register-link a:hover {
-  color: var(--text-dark);
-}
-
-.register-link {
-  margin-top: 20px;
-  font-size: 14px;
-  color: var(--text-gray);
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {
@@ -119,19 +31,53 @@ body {
   padding: 20px;
 }
 
+/* Navbar */
+nav {
+  width: 100%;
+  background: var(--primary-gradient);
+  padding: 10px 0;
+  box-shadow: 0 4px 6px var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-white);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+nav ul li:hover {
+  color: var(--bg-light);
+}
+
+/* Page Header */
 .page-header {
   text-align: center;
   color: var(--primary-color);
-  margin-bottom: 30px;
+  margin: 40px 0 20px;
   font-size: 36px;
   font-weight: bold;
 }
 
+/* Product Section */
 .product-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  margin-top: 15px; /* Ensures spacing under the navbar */
 }
 
 .product-card {
@@ -157,6 +103,16 @@ body {
   margin-bottom: 10px;
 }
 
+.product-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .product-price {
   font-size: 18px;
   color: var(--text-gray);
@@ -180,12 +136,39 @@ body {
   box-shadow: 0 4px 6px var(--shadow-md);
 }
 
-.product-image {
+/* Footer */
+footer {
+  background: var(--bg-light);
+  padding: 20px;
+  border-top: 1px solid var(--shadow-sm);
+  display: flex;
+  justify-content: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
   width: 100%;
-  max-width: 200px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container > div {
+  flex: 1;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.footer-left,
+.footer-right {
+  text-align: left;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+footer p {
+  margin: 5px 0;
+  color: var(--text-gray);
 }
