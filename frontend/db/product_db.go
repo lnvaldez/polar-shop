@@ -32,3 +32,17 @@ func (db *ProductDB) GetAvailableProducts() ([]model.Product, error) {
 
 	return prods, nil
 }
+
+func (db *ProductDB) GetProductById(productId string) (*model.Product, error) {
+	var product model.Product
+
+	filter := bson.D{{Key: "_id", Value: productId}}
+
+	err := db.MongoCollection.FindOne(context.Background(), filter).Decode(&product)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &product, nil
+}
