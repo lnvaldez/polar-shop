@@ -55,16 +55,16 @@ func main() {
 	))
 
     productColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
-    orderColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("ORDERS_COLLECTION"))
+    // orderColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("ORDERS_COLLECTION"))
 
 
     productService := &service.ProductService{
         MongoCollection: productColl,
     }
 
-	orderService := &service.OrderService{
-		MongoCollection: orderColl,
-	}
+	// orderService := &service.OrderService{
+	// 	MongoCollection: orderColl,
+	// }
 
     r := mux.NewRouter()
 
