@@ -80,7 +80,7 @@ const renderSettingsPage = async (req, res) => {
   try {
     res.render("admin/settings");
   } catch (error) {
-    console.error({ error: erro.message });
+    console.error({ error: error.message });
     res.render("error");
   }
 };
