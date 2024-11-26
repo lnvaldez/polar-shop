@@ -16,7 +16,6 @@ type ProductService struct {
 
 type Response struct {
 	Data interface{} `json:"data,omitempty"`
-	Error string `json:"error, omitempty"`
+	Error string `json:"error,omitempty"`
 }
 
-func (svc *service.OrderService) 
