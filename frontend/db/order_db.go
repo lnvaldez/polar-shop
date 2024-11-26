@@ -14,6 +14,16 @@ type OrderDB struct {
 	MongoCollection *mongo.Collection
 }
 
+func (db *OrderDB) CreateNewOrder(ord *model.Order) (interface{}, error) {
+	result, err := db.MongoCollection.InsertOne(context.Background(), ord)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return result, nil;
+}
+
 func (db *OrderDB) GetAllOrders() ([]model.Order, error) {
 	result, err := db.MongoCollection.Find(context.Background(), bson.D{})
 
