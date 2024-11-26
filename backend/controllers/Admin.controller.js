@@ -7,8 +7,14 @@ const { User } = require("../models");
 const renderAdminDashboard = async (req, res) => {
   try {
     const products = await Product.find();
+    const users = await User.find();
+    // const orders = await Orders.find();
+
     const totalProducts = products.length;
-    res.render("admin/dashboard", { totalProducts });
+    const totalUsers = users.length;
+    // const totalOrders = orders.length;
+
+    res.render("admin/dashboard", { totalProducts, totalUsers });
   } catch (error) {
     console.error({ error: error.message });
     res.render("error");
