@@ -13,6 +13,7 @@
         {{range .Products}}
         <div class="product-card">
           <h2 class="product-name">{{.Name}}</h2>
+          <img class="product-image" src="{{.Image}}" alt="{{.Name}}" />
           <p class="product-price">$ {{.Price}}</p>
           <a class="order-btn" href="/products/order/{{.ID}}">Order</a>
         </div>
