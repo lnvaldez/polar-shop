@@ -48,6 +48,7 @@ func main() {
     tmpl := template.Must(template.ParseFiles(
 		"templates/layout.html",
 		"templates/product_list.html",
+		"templates/order_product.html",
 		"templates/register.html",
 		"templates/login.html",
 		"templates/partials/footer.html",
@@ -70,7 +71,8 @@ func main() {
 
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-    r.HandleFunc("/products", handlers.ProductListHandler(productService, tmpl)).Methods("GET")
+    r.HandleFunc("/products", handlers.RenderAvailableProductsPage(productService, tmpl)).Methods("GET")
+	// r.HandleFunc("/products/order", handlers.RenderOrderProductPage(productService, tmpl)).Methods("GET")
 	r.HandleFunc("/register", handlers.RenderRegisterPage(tmpl)).Methods("GET")
 	r.HandleFunc("/login", handlers.RenderLoginPage(tmpl)).Methods("GET")
 
