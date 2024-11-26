@@ -55,16 +55,16 @@ func main() {
 	))
 
     productColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
-    // orderColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("ORDERS_COLLECTION"))
+    orderColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("ORDERS_COLLECTION"))
 
 
     productService := &service.ProductService{
         MongoCollection: productColl,
     }
 
-	// orderService := &service.OrderService{
-	// 	MongoCollection: orderColl,
-	// }
+	orderService := &handlers.OrderService{
+		MongoCollection: orderColl,
+	}
 
     r := mux.NewRouter()
 
@@ -73,6 +73,8 @@ func main() {
     r.HandleFunc("/products", handlers.ProductListHandler(productService, tmpl)).Methods("GET")
 	r.HandleFunc("/register", handlers.RenderRegisterPage(tmpl)).Methods("GET")
 	r.HandleFunc("/login", handlers.RenderLoginPage(tmpl)).Methods("GET")
+
+	r.HandleFunc("/order", orderService.CreateNewOrder).Methods(http.MethodPost)
 
 	c := cors.New(cors.Options{
 		AllowedOrigins: []string{"http://localhost:5000"},
