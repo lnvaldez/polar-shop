@@ -179,3 +179,13 @@ body {
   background-color: #3c7de6;
   box-shadow: 0 4px 6px var(--shadow-md);
 }
+
+.product-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
