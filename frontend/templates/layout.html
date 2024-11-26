@@ -8,14 +8,8 @@
     <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Polar Shop</h1>
-    </header>
-
     {{template "navbar" .}}
-
-    <main>{{block "content" .}}{{end}}</main>
-
+    <div class="container">{{template "content" .}}</div>
     {{template "footer" .}}
   </body>
 </html>
