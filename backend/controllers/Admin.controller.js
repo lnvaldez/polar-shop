@@ -68,7 +68,8 @@ const renderUsersPage = async (req, res) => {
 
 const renderOrdersPage = async (req, res) => {
   try {
-    res.render("admin/orders");
+    const orders = await Order.find().sort({ createdAt: -1 });
+    res.render("admin/orders", { orders });
   } catch (error) {
     console.error({ error: error.message });
     res.render("error");
