@@ -8,7 +8,7 @@ import (
 	"html/template"
 )
 
-func ProductListHandler(productService *service.ProductService, tmpl *template.Template) http.HandlerFunc {
+func RenderAvailableProductsPage(productService *service.ProductService, tmpl *template.Template) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
         prods, err := productService.GetAvailableProducts()
         if err != nil {
