@@ -15,7 +15,7 @@ type ProductDB struct {
 }
 
 func (db *ProductDB) GetAvailableProducts() ([]model.Product, error) {
-	filter := bson.D{{"isAvailable", true}}
+	filter := bson.D{{Key: "isAvailable", Value: true}}
 
 	result, err := db.MongoCollection.Find(context.Background(), filter)
 
