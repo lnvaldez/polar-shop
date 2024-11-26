@@ -1,16 +1,24 @@
 {{define "content"}}
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Available Products</title>
   </head>
   <body>
-    <h1>Available Products</h1>
-    <ul>
-      {{range .Products}}
-      <li>{{.Name}} - {{.Price}}</li>
-      {{end}}
-    </ul>
+    <div class="container">
+      <h1 class="page-header">Available Products</h1>
+      <div class="product-container">
+        {{range .Products}}
+        <div class="product-card">
+          <h2 class="product-name">{{.Name}}</h2>
+          <p class="product-price">$ {{.Price}}</p>
+          <a class="order-btn" href="/products/order/{{.ID}}">Order</a>
+        </div>
+        {{end}}
+      </div>
+    </div>
   </body>
 </html>
 {{end}}
