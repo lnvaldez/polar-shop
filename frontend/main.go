@@ -54,11 +54,17 @@ func main() {
 		"templates/partials/navbar.html", 
 	))
 
-    coll := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
+    productColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("PRODUCTS_COLLECTION"))
+    orderColl := mongoClient.Database(os.Getenv("DB_NAME")).Collection(os.Getenv("ORDERS_COLLECTION"))
+
 
     productService := &service.ProductService{
-        MongoCollection: coll,
+        MongoCollection: productColl,
     }
+
+	orderService := &service.OrderService{
+		MongoCollection: orderColl,
+	}
 
     r := mux.NewRouter()
 
