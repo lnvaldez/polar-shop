@@ -25,4 +25,4 @@ const orderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.Model("Order", orderSchema);
+module.exports = mongoose.model("Order", orderSchema);
