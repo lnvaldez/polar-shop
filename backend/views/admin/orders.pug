@@ -1,1 +1,22 @@
-extends ../layouts/main
+extends ../layouts/main 
+
+block content 
+    .container 
+        .header
+            h1 Orders
+        
+        table.products-table
+            thead
+                tr
+                    th ID Code
+                    th Customer Name 
+                    th Product
+                    th Quantity
+                    th Total Price
+                    th Status
+                    th Actions
+            tbody
+                each order in orders
+                    tr
+                        td= order._id 
+                        td= order.customerName 
