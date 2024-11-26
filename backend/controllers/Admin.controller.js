@@ -2,19 +2,20 @@ const mongoose = require("mongoose");
 
 const { Product } = require("../models");
 const { User } = require("../models");
+const { Order } = require("../models");
 
 //* ..Render views
 const renderAdminDashboard = async (req, res) => {
   try {
     const products = await Product.find();
     const users = await User.find();
-    // const orders = await Orders.find();
+    const orders = await Order.find();
 
     const totalProducts = products.length;
     const totalUsers = users.length;
-    // const totalOrders = orders.length;
+    const totalOrders = orders.length;
 
-    res.render("admin/dashboard", { totalProducts, totalUsers });
+    res.render("admin/dashboard", { totalProducts, totalUsers, totalOrders });
   } catch (error) {
     console.error({ error: error.message });
     res.render("error");
