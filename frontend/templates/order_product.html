@@ -1,45 +1,61 @@
 {{define "order-product-content"}}
-<h1 class="page-header">Order Product</h1>
-<p>{{.Product.Image}}</p>
-<div class="form-container">
-  <form action="/order" method="POST" class="order-form">
-    <input type="hidden" name="productId" value="{{.Product.ID}}" />
-    <div class="form-group">
-      <label for="name" class="form-label">Name:</label>
-      <input
-        type="text"
-        id="name"
-        name="customerName"
-        class="form-input"
-        required
+<div class="order-form-container">
+  <div class="order-card">
+    <h3>My Products</h3>
+    <div class="product-section">
+      <img
+        src="{{.Product.Image}}"
+        alt="{{.Product.Name}}"
+        class="product-image"
       />
+      <div class="product-details">
+        <p><strong>{{.Product.Name}}</strong></p>
+        <p>Available Quantity: {{.Product.Quantity}}</p>
+        <label for="quantity">Quantity:</label>
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          min="1"
+          max="{{.Product.Quantity}}"
+          required
+        />
+      </div>
     </div>
-    <div class="form-group">
-      <label for="email" class="form-label">Email:</label>
-      <input type="email" id="email" name="email" class="form-input" required />
-    </div>
-    <div class="form-group">
-      <label for="quantity" class="form-label">Quantity:</label>
-      <input
-        type="number"
-        id="quantity"
-        name="quantity"
-        min="1"
-        max="{{.Product.Quantity}}"
-        class="form-input"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="address" class="form-label">Address:</label>
-      <textarea
-        id="address"
-        name="address"
-        class="form-textarea"
-        required
-      ></textarea>
-    </div>
-    <button type="submit" class="form-btn">Place Order</button>
-  </form>
+    <form action="/order" method="POST" class="customer-form">
+      <input type="hidden" name="productId" value="{{.Product.ID}}" />
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="customerName"
+          placeholder="Enter your full name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea
+          id="address"
+          name="address"
+          placeholder="Enter your address"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Place Order</button>
+    </form>
+  </div>
 </div>
+
 {{end}}

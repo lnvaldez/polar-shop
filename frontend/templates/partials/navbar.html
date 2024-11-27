@@ -1,14 +1,30 @@
 {{define "navbar"}}
 <nav>
   <ul>
-    <li>Home</li>
-    <li>Fashion & Accessories</li>
-    <li>Technology & Gadgets</li>
-    <li>Outdoor & Sports Equipment</li>
-    <li>Home & Lifestyle</li>
-    <li>Food & Beverages</li>
-    <li>Grooming & Personal Care</li>
-    <li>Entertainment</li>
+    <li>
+      <a class="logo" href="#"
+        ><img src="../static/images/logo.png" alt="logo" /><span
+          class="nav-item"
+          >Polar Shop</span
+        ></a
+      >
+    </li>
+    <li>
+      <a href="/admin/dashboard"
+        ><i class="fas fa-home"></i><span class="nav-item">Home</span></a
+      >
+    </li>
+    <li>
+      <a href="/admin/products"
+        ><i class="fas fa-box"></i><span class="nav-item">Products</span></a
+      >
+    </li>
+    <li>
+      <a href="/admin/users"
+        ><i class="fas fa-shopping-cart"></i
+        ><span class="nav-item">Cart</span></a
+      >
+    </li>
   </ul>
 </nav>
 {{end}}
