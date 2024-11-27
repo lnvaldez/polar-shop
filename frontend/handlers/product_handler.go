@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"polar-shop/models"
 	"polar-shop/service"
 
 	"html/template"
@@ -18,13 +17,15 @@ func RenderAvailableProductsPage(productService *service.ProductService, tmpl *t
             return
         }
 
-        data := struct {
-            Products []model.Product
-        }{
-            Products: prods,
+        data := map[string]interface{}{
+            "Products": prods,
         }
 
-        err = tmpl.ExecuteTemplate(w, "layout", data)
+        err = tmpl.ExecuteTemplate(w, "layout", map[string]interface{}{
+            "Content": func() error {
+                return tmpl.ExecuteTemplate(w, "product-list-content", data)
+            },
+        })
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
             return
@@ -46,7 +47,11 @@ func RenderOrderProductPage(productService *service.ProductService, tmpl *templa
             "Product": prod,
         }
 
-        err = tmpl.ExecuteTemplate(w, "order_product", data)
+        err = tmpl.ExecuteTemplate(w, "layout", map[string]interface{}{
+            "Content": func() error {
+                return tmpl.ExecuteTemplate(w, "order-product-content", data)
+            },
+        })
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
             return
