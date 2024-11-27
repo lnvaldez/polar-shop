@@ -1,22 +1,20 @@
 {{define "navbar"}}
-<nav>
-  <ul>
-    <li>
-      <a href="/admin/dashboard"
-        ><i class="fas fa-home"></i><span class="nav-item">Home</span></a
-      >
-    </li>
-    <li>
-      <a href="/admin/products"
-        ><i class="fas fa-box"></i><span class="nav-item">Products</span></a
-      >
-    </li>
-    <li>
-      <a href="/admin/users"
-        ><i class="fas fa-shopping-cart"></i
-        ><span class="nav-item">Cart</span></a
-      >
-    </li>
-  </ul>
+<nav class="navbar">
+  <div class="navbar-container">
+    <ul class="nav-items">
+      <li>
+        <a href="/admin/dashboard">
+          <span class="nav-item">Deals </span>
+          <i class="fas fa-angle-down"></i>
+        </a>
+      </li>
+      <li>
+        <a href="/admin/products">
+          <span class="nav-item">Services </span>
+          <i class="fas fa-angle-down"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
 {{end}}

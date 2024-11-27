@@ -1,17 +1,29 @@
 {{define "header"}}
-<nav>
-  <ul>
-    <li>
-      <a class="logo" href="#"
-        ><img src="../static/images/logo.png" alt="logo" /><span
-          class="nav-item"
-          >Polar Shop</span
-        ></a
-      >
-    </li>
-    <li>
-      <input type="text" placeholder="Search Polar Shop" />
-    </li>
-  </ul>
+<nav class="header">
+  <div class="header-container">
+    <div class="left-section">
+      <!-- Logo -->
+      <div class="logo-container">
+        <a class="logo" href="#">
+          <img src="../static/images/logo.png" alt="Polar Shop Logo" />
+          <span class="nav-item">Polar Shop</span>
+        </a>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" placeholder="Search Polar Shop" />
+        <button type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Icons / Links -->
+    <div class="nav-links">
+      <a href="/account"><i class="far fa-user-circle"></i> My Account</a>
+      <a href="/cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+    </div>
+  </div>
 </nav>
 {{end}}
