@@ -77,7 +77,7 @@ nav ul li:hover {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin-top: 15px; /* Ensures spacing under the navbar */
+  margin-top: 15px;
 }
 
 .product-card {
@@ -171,4 +171,72 @@ footer {
 footer p {
   margin: 5px 0;
   color: var(--text-gray);
+}
+
+/* Form Container */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--text-white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow-sm);
+}
+
+/* Form Styling */
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.form-input,
+.form-textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid var(--shadow-sm);
+  border-radius: 6px;
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(76, 144, 255, 0.5);
+}
+
+.form-textarea {
+  resize: none;
+  height: 100px;
+}
+
+.form-btn {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-btn:hover {
+  background-color: #3c7de6;
+  box-shadow: 0 4px 6px var(--shadow-md);
 }
