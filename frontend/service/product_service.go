@@ -17,7 +17,7 @@ func (svc *ProductService) GetAvailableProducts() ([]model.Product, error) {
     return db.GetAvailableProducts()
 }
 
-func (svc *ProductService) GetProductByName(productId string) (*model.Product, error) {
+func (svc *ProductService) GetProductByName(productName string) (*model.Product, error) {
 	db := db.ProductDB{MongoCollection: svc.MongoCollection}
-	return db.GetProductByName(productId)
+	return db.GetProductByName(productName)
 }
