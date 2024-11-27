@@ -33,10 +33,10 @@ func (db *ProductDB) GetAvailableProducts() ([]model.Product, error) {
 	return prods, nil
 }
 
-func (db *ProductDB) GetProductById(productId string) (*model.Product, error) {
+func (db *ProductDB) GetProductByName(productName string) (*model.Product, error) {
 	var product model.Product
 
-	filter := bson.D{{Key: "_id", Value: productId}}
+	filter := bson.D{{Key: "name", Value: productName}}
 
 	err := db.MongoCollection.FindOne(context.Background(), filter).Decode(&product)
 
