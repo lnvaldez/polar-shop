@@ -9,7 +9,7 @@
   </head>
   <body>
     {{template "navbar" .}}
-    <div class="container">{{template "content" .}}</div>
+    <div class="container">{{call .Content}}</div>
     {{template "footer" .}}
   </body>
 </html>
