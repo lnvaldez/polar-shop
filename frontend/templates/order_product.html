@@ -13,7 +13,7 @@
         <p>Available Quantity: {{.Product.Quantity}}</p>
       </div>
       <form action="/order" method="POST" class="customer-form">
-        <input type="hidden" name="productId" value="{{.Product.ID}}" />
+        <input type="hidden" name="productName" value="{{.Product.Name}}" />
         <div class="form-group">
           <label for="quantity">Quantity:</label>
           <input
