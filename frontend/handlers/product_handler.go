@@ -6,8 +6,8 @@ import (
 
 	"html/template"
 	"net/http"
+    "github.com/gorilla/mux"
 
-	"github.com/gorilla/mux"
 )
 
 func RenderAvailableProductsPage(productService *service.ProductService, tmpl *template.Template) http.HandlerFunc {
@@ -27,15 +27,16 @@ func RenderAvailableProductsPage(productService *service.ProductService, tmpl *t
         err = tmpl.ExecuteTemplate(w, "layout", data)
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
+            return
         }
     }
 }
 
 func RenderOrderProductPage(productService *service.ProductService, tmpl *template.Template) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
-        prodID := mux.Vars(r)["id"]
+        productName := mux.Vars(r)["name"]
 
-        prod, err := productService.GetProductById(prodID)
+        prod, err := productService.GetProductByName(productName)
         if err != nil {
             http.Error(w, "Product not found", http.StatusNotFound)
             return
@@ -45,9 +46,10 @@ func RenderOrderProductPage(productService *service.ProductService, tmpl *templa
             "Product": prod,
         }
 
-        err = tmpl.ExecuteTemplate(w, "layout", data)
+        err = tmpl.ExecuteTemplate(w, "order_product", data)
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
+            return
         }
     }
 }
