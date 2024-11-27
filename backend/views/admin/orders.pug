@@ -12,6 +12,7 @@ block content
                     th Customer Name 
                     th Product
                     th Quantity
+                    th Address 
                     th Total Price
                     th Status
                     th Actions
@@ -20,3 +21,8 @@ block content
                     tr
                         td= order._id 
                         td= order.customerName 
+                        td Popsicle
+                        td= order.productQuantity
+                        td= order.address
+                        td $50
+                        td= order.status
