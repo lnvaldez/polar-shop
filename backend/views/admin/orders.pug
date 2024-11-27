@@ -35,6 +35,8 @@ block content
                         td.actions
                             if order.status === 'Pending'
                                 form.approve-order-form(action=`/orders/approve/${order._id}` method="POST")
+                                    input(type="hidden" name="productName" value=`${order.productName}`) 
+                                    input(type="hidden" name="productQuantity" value=`${order.productQuantity}`)  
                                     button.approve-btn(type="submit") Approve
                                 form.cancel-order-form(action=`/orders/cancel/${order._id}` method="POST" onsubmit="return confirm('Are you sure you want to cancel this order?');")
                                     button.cancel-btn(type="submit") Cancel
