@@ -209,3 +209,29 @@ footer p {
   margin-bottom: 20px;
   font-size: 20px;
 }
+
+.header-container {
+  display: flex;
+  padding-left: 150px;
+  padding-right: 150px;
+  justify-content: left;
+}
+
+.nav-container {
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.nav-items {
+  display: flex;
+  width: 62%;
+  align-items: center;
+  justify-content: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item i {
+  color: white;
+}
