@@ -51,6 +51,7 @@ func main() {
 		"templates/order_product.html",
 		"templates/register.html",
 		"templates/login.html",
+		"templates/partials/header.html",
 		"templates/partials/footer.html",
 		"templates/partials/navbar.html", 
 	))
