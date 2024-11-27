@@ -72,7 +72,7 @@ func main() {
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
     r.HandleFunc("/products", handlers.RenderAvailableProductsPage(productService, tmpl)).Methods("GET")
-	// r.HandleFunc("/products/order", handlers.RenderOrderProductPage(productService, tmpl)).Methods("GET")
+	r.HandleFunc("/products/order/{name}", handlers.RenderOrderProductPage(productService, tmpl)).Methods("GET")
 	r.HandleFunc("/register", handlers.RenderRegisterPage(tmpl)).Methods("GET")
 	r.HandleFunc("/login", handlers.RenderLoginPage(tmpl)).Methods("GET")
 
