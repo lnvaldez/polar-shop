@@ -16,3 +16,8 @@ func (svc *ProductService) GetAvailableProducts() ([]model.Product, error) {
     db := db.ProductDB{MongoCollection: svc.MongoCollection}
     return db.GetAvailableProducts()
 }
+
+func (svc *ProductService) GetProductById(productId string) (*model.Product, error) {
+	db := db.ProductDB{MongoCollection: svc.MongoCollection}
+	return db.GetProductById(productId)
+}
