@@ -47,8 +47,8 @@ func main() {
 
     tmpl := template.Must(template.ParseFiles(
 		"templates/layout.html",
-		"templates/product_list.html",
-		"templates/order_product.html",
+		"templates/product-list.html",
+		"templates/order.html",
 		"templates/register.html",
 		"templates/login.html",
 		"templates/partials/header.html",
