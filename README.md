@@ -10,7 +10,7 @@ Before starting, ensure you have the following installed:
 - Go (v1.16 or higher) - [Download](https://golang.org/dl/)
 - MongoDB (v4.4 or higher)
   - Option 1: [Local Installation](https://docs.mongodb.com/manual/installation/)
-  - Option 2: [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
+  - Option 2: [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) - [YouTube Tutorial](https://www.youtube.com/shorts/pIHvoXkwmq4)
 
 ## Project Structure
 
